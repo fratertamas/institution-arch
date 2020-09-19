@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  checker:
+    container_name: "institution-checker"
+    image: institution-checker:1.0.0
+    ports:
+      - "8082:8082"
+    networks:
+      - institition_network
+
+  manager:
+    image: institution-manager:1.0.0
+    ports:
+      - "8080:8080"
+    networks:
+      - institition_network
+
+  persistence:
+    container_name: "institution-persistence"
+    image: institution-persistence:1.0.0
+    ports:
+      - "8083:8083"
+    networks:
+      - institition_network
+
+  query:
+    container_name: "institution-query"
+    image: institution-query:1.0.0
+    ports:
+      - "8084:8084"
+    networks:
+      - institition_network
+
+networks:
+
+  institition_network:
+
